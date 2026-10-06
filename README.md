@@ -1,72 +1,76 @@
 # AI-ML Assignments
 
-A comprehensive collection of artificial intelligence, deep learning, computer vision, and machine learning assignments. This repository serves as an academic and practical portfolio demonstrating end-to-end model implementations, feature engineering pipelines, and rigorous performance evaluations.
+A comprehensive collection of artificial intelligence, deep learning, computer vision, natural language processing, and reinforcement learning assignments. This repository serves as an academic and practical portfolio demonstrating end-to-end model implementations, feature engineering pipelines, algorithmic searches, and deep learning architectures.
 
 ---
 
-## 📂 Repository Structure & Overview
+## 📂 Directory Structure & Assignment Overview
 
-The repository contains modular Jupyter notebooks and project files structured as follows:
+```text
+AI-ML_Assignments/
+├── sem1_deep_learning/
+│   ├── 2025AA05327_dnn_assignment.ipynb
+│   ├── 2025AA05327_cnn_assignment.ipynb
+│   └── 2025AA05327_rnn_assignment.ipynb
+├── 2025AA05327_ML_Assignment2/
+│   └── (Machine Learning Core Assignments & Pipelines)
+├── sem2_artifical_and_computational_intelligence/
+│   └── aci_Assignment1_PS12.ipynb
+├── sem2_computer_vision/
+│   ├── CV_assignment1_35_1.ipynb
+│   └── CV_assignment2_35_4.ipynb
+├── sem2_deep_reinforcement_learning/
+│   ├── Team_28_DP.ipynb
+│   ├── Team_28_MAB.ipynb
+│   └── Team_28_Q_learning_DQN_DDQN (2).pdf
+├── sem2_nlp/
+│   └── G028_PS7_NLP_assignment1.ipynb
+└── README.md
+```
 
-| # | Assignment File / Directory | Domain | Focus Area & Key Techniques |
-|---|---|---|---|
-| 1 | `2025AA05327_dnn_assignment.ipynb` | Deep Learning (DNN) | Binary Classification, MLP vs. Linear Models, Medical Diagnosis (Recall-optimized) |
-| 2 | `2025AA05327_cnn_assignment.ipynb` | Computer Vision (CNN) | Deep Spatial Feature Extraction, 2D Convolutional Networks, Softmax Classification |
-| 3 | `2025AA05327_rnn_assignment.ipynb` | Sequential Learning (RNN) | Recurrent Architecture Benchmarking (Vanilla RNN vs. GRU vs. LSTM) |
-| 4 | `CV_assignment1_35_1.ipynb` | Computer Vision (Classical) | Handwritten Character Recognition, Feature Extraction (HOG, LBP), Supervised ML |
-| 5 | `2025AA05327_ML_Assignment2/` | Machine Learning | Core ML Principles, Pipeline Preprocessing, Framework Implementations |
+## 📚 Subject-Wise Breakdown
 
----
-
-## 🛠️ Detailed Project Breakdown
-
-### 1. Convolutional Neural Networks (CNN)
-* **File:** `2025AA05327_cnn_assignment.ipynb`
-* **Objective:** Transition from manual feature engineering to automated visual hierarchy learning for image classification.
-* **Exact Pipeline & Code Execution:**
-  * **Data Handling:** Reshapes input matrices to explicitly enforce tensor compatibility `(batch, width, height, channels)` and applies pixel-value normalization to scale intensities down to a continuous $[0, 1]$ range.
-  * **Architecture Blueprint:**
-    * **`Conv2D` Layers:** Employs localized $3 \times 3$ kernel filters matched with **ReLU** non-linear activation functions to systematically isolate edges, textures, and geometric shapes.
-    * **`MaxPooling2D` Layers:** Employs $2 \times 2$ downsampling windows to enforce spatial translation invariance and aggressively slash computational overhead.
-    * **Regularization & Output:** Injects `Dropout` layers ($0.25$ to $0.5$) during the forward pass to penalize co-dependency, flattens the dimensional output into a 1D feature vector, and routes it through a final dense head using **Softmax** to generate multi-class probability scores.
-  * **Optimization Engine:** Compiled via the **Adam** optimizer tracking `CategoricalCrossentropy` loss, integrated with dynamic callbacks like `ReduceLROnPlateau` and `EarlyStopping`.
-
-### 2. Recurrent Neural Networks (RNN)
-* **File:** `2025AA05327_rnn_assignment.ipynb`
-* **Objective:** Capture sequential relationships and long-term historical context within time-ordered / tokenized sequence data.
-* **Exact Pipeline & Code Execution:**
-  * **Sequence Preprocessing:** Converts categorical strings or data sequences into standardized integer tokens, forcing uniformity across variable-length lines via sequence padding (`pad_sequences`).
-  * **Feature Embedding:** Feeds padded sequence indices into a joint `Embedding` layer to map integers into dense continuous low-dimensional vector representations.
-  * **Comparative Architectures Evaluated:**
-    * **Vanilla RNN (`SimpleRNN`):** Used as a baseline model to capture short-range dependencies, highlighting architectural bottlenecks induced by the **Vanishing Gradient Problem**.
-    * **LSTM (Long Short-Term Memory):** Implements specialized gating controls (**Forget, Input, and Output gates**) to seamlessly route and preserve gradients over expansive sequence spaces.
-    * **GRU (Gated Recurrent Unit):** Leverages compressed dual-gating structures (**Reset and Update gates**) to accelerate training runs while maintaining comparable sequence tracking capabilities.
-  * **Configuration Details:** Manipulates the `return_sequences` boolean flag to cleanly stack deep recurrent sequences down into a static sequence vector, terminating in a dense layer mapped to the target label workspace.
-
-### 3. Machine Learning — Foundations & Core Principles
-* **Directory:** `2025AA05327_ML_Assignment2/`
-* **Focus:** Implementation of fundamental machine learning pipelines and mathematical frameworks.
-* **Key Implementations:**
-  * **Feature Engineering:** Automated strategies handling missing value imputations, structural outliers, and scaling variances (Standard vs. MinMax Scalers).
-  * **Model Selection:** Rigorous benchmarking across classic algorithms including linear classifiers, decision-tree paradigms (Random Forests), and distance clusterers.
-  * **Validation Protocol:** Implements K-Fold cross-validation loops to establish verifiable generalization metrics and prevent training-set leakage.
-
-### 4. Deep Neural Networks (DNN)
-* **File:** `2025AA05327_dnn_assignment.ipynb`
-* **Dataset:** Breast Cancer Wisconsin Dataset (569 samples, 30 features).
-* **Task:** Medical binary classification (Malignant vs. Benign).
-* **Optimization Metric:** **Recall**. In clinical environments, minimizing False Negatives (unmissed critical conditions) takes definitive priority over precision tracking.
-
-### 5. Computer Vision — Classical Approaches
-* **File:** `CV_assignment1_35_1.ipynb`
-* **Dataset:** EMNIST Letters dataset (20,000 images, standard A-Z characters).
-* **Feature Engineering:** Image contrast correction using Histogram Equalization followed by explicit statistical feature tracking via Histogram of Oriented Gradients (**HOG**) and Local Binary Patterns (**LBP**).
+### 1. Semester 1 — Deep Learning (`sem1_deep_learning/`)
+* **Deep Neural Networks (DNN)** — `2025AA05327_dnn_assignment.ipynb`
+  * **Dataset:** Breast Cancer Wisconsin Dataset (569 samples, 30 features).
+  * **Focus:** Medical binary classification comparing MLP vs. Linear models, optimized specifically for **Recall** to minimize false negatives.
+* **Convolutional Neural Networks (CNN)** — `2025AA05327_cnn_assignment.ipynb`
+  * **Focus:** Automated visual feature learning, 2D convolution head with ReLU activations, MaxPool2D layers, Dropout regularization, and Softmax output.
+* **Recurrent Neural Networks (RNN)** — `2025AA05327_rnn_assignment.ipynb`
+  * **Focus:** Benchmarking sequence architectures (**Vanilla RNN**, **LSTM**, and **GRU**) for long-term historical context retention and handling vanishing gradients.
 
 ---
 
-## 🚀 Getting Started
+### 2. Semester 1 — Machine Learning (`2025AA05327_ML_Assignment2/`)
+* **Focus:** End-to-end ML workflows including feature scaling (Standard vs. MinMax), missing value imputation, outlier handling, baseline classifiers, decision trees, and K-Fold cross-validation loops.
 
-### Prerequisites
-Install the comprehensive scientific calculation and deep learning stack:
-```bash
-pip install numpy pandas matplotlib scikit-learn tensorflow torch torchvision
+---
+
+### 3. Semester 2 — Artificial & Computational Intelligence (`sem2_artifical_and_computational_intelligence/`)
+* **Problem Set 12** — `aci_Assignment1_PS12.ipynb`
+  * **Focus:** Search algorithms, state-space exploration, and heuristic-driven decision-making frameworks.
+
+---
+
+### 4. Semester 2 — Computer Vision (`sem2_computer_vision/`)
+* **Classical CV & Character Recognition** — `CV_assignment1_35_1.ipynb`
+  * **Dataset:** EMNIST Letters dataset (20,000 images).
+  * **Focus:** Contrast adjustment (Histogram Equalization), manual feature extraction using **HOG** (Histogram of Oriented Gradients) and **LBP** (Local Binary Patterns), followed by supervised classification.
+* **Advanced Computer Vision** — `CV_assignment2_35_4.ipynb`
+  * **Focus:** Deep feature representation and image classification techniques.
+
+---
+
+### 5. Semester 2 — Deep Reinforcement Learning (`sem2_deep_reinforcement_learning/`)
+* **Dynamic Programming** — `Team_28_DP.ipynb`
+  * **Focus:** Exact RL solutions using Policy Iteration and Value Iteration in grid-world / Markov Decision Process (MDP) environments.
+* **Multi-Armed Bandits** — `Team_28_MAB.ipynb`
+  * **Focus:** Exploration vs. Exploitation trade-off algorithms including $\epsilon$-Greedy, Upper Confidence Bound (UCB), and Thompson Sampling.
+* **Q-Learning, DQN & Double DQN Report** — `Team_28_Q_learning_DQN_DDQN (2).pdf`
+  * **Focus:** Comprehensive report detailing model-free RL algorithms, off-policy Q-learning, Deep Q-Networks (DQN) with experience replay, and Double DQN to resolve overestimation bias.
+
+---
+
+### 6. Semester 2 — Natural Language Processing (`sem2_nlp/`)
+* **NLP Assignment 1 (PS7)** — `G028_PS7_NLP_assignment1.ipynb`
+  * **Focus:** Text preprocessing (tokenization, lemmatization, stop-word removal), TF-IDF vectorization, and sequence modeling for NLP tasks.
